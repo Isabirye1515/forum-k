@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- OWNER TABLE -->
+    <changeSet id="1" author="elia">
+        <createTable tableName="owner">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="image" type="bytea"/>
+            <column name="bio" type="varchar(255)"/>
+            <column name="phone" type="VARCHAR(20)"/>
+            <column name="last_updated" type="TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+
+    <!-- CONTACT TABLE -->
+    <changeSet id="2" author="elia">
+        <createTable tableName="contact">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="image" type="bytea"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="bio" type="varchar(255)"/>
+            <column name="phone" type="VARCHAR(20)"/>
+            <column name="last_updated" type="TIMESTAMP"/>
+            <column name="owner_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_contact_owner" references="owner(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- MESSAGE TABLE -->
+    <changeSet id="3" author="elia">
+        <createTable tableName="message">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="message" type="varchar(255)"/>
+            <column name="message_type" type="VARCHAR(255)"/>
+            <column name="message_code" type="VARCHAR(255)"/>
+            <column name="message_text" type="VARCHAR(255)"/>
+            <column name="last_updated" type="TIMESTAMP"/>
+            <column name="owner_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_message_owner" references="owner(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
