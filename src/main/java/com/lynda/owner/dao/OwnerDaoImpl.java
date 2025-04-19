@@ -27,6 +27,7 @@ public class OwnerDaoImpl  implements OwnerDao {
     @Transactional
     public void addOwner(Owner owner) {
         entityManager.persist(owner);
+        entityManager.flush();
     }
 
 
@@ -69,9 +70,9 @@ public class OwnerDaoImpl  implements OwnerDao {
     @Override
     @Transactional
     public List<Owner> getAllOwners() {
-        String sql = "select o from Owner o";
-        List<Owner> owners = entityManager.createQuery(sql, Owner.class)
-                .getResultList();
+        String sql = "SELECT DISTINCT o FROM Owner o LEFT JOIN FETCH o.contact";
+        List<Owner> owners = entityManager.createQuery(sql, Owner.class).getResultList();
+        
         return owners;
     }
 

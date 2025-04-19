@@ -17,7 +17,7 @@ import com.lynda.owner.placehoder.Owner;
 @Table(name = "message")
 public class Message {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "message")
     private String message;

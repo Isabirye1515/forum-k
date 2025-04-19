@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.List;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.lynda.contact.placeholder.Contact;
 import com.lynda.mesage.placehoder.Message;
 
@@ -12,7 +13,7 @@ import com.lynda.mesage.placehoder.Message;
 public class Owner {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id; 
 
     @Column(name = "name")
@@ -22,7 +23,7 @@ public class Owner {
     private String email;
 
     @Column(name = "image")
-    private byte[] image;
+    private String image;
 
     @Column(name = "bio")
     private String bio;
@@ -31,17 +32,17 @@ public class Owner {
     private String phone;
     @Column(name = "last_updated")
     private Timestamp lastUpdated;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "owner")
     private List<Contact> contact;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "owner")
     private List<Message> message;
 
     public Owner() {
     }
 
-    public Owner(int id, String name, String email, byte[] image, String bio, String phone) {
+    public Owner(int id, String name, String email, String image, String bio, String phone) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -74,11 +75,11 @@ public class Owner {
         this.email = email;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

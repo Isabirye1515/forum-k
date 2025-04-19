@@ -13,7 +13,7 @@
             </column>
             <column name="name" type="VARCHAR(255)"/>
             <column name="email" type="VARCHAR(255)"/>
-            <column name="image" type="bytea"/>
+            <column name="image" type="VARCHAR(255)"/>
             <column name="bio" type="varchar(255)"/>
             <column name="phone" type="VARCHAR(20)"/>
             <column name="last_updated" type="TIMESTAMP"/>
@@ -27,7 +27,7 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="email" type="VARCHAR(255)"/>
-            <column name="image" type="bytea"/>
+            <column name="image" type="VARCHAR(255)"/>
             <column name="name" type="VARCHAR(255)"/>
             <column name="bio" type="varchar(255)"/>
             <column name="phone" type="VARCHAR(20)"/>

@@ -16,12 +16,12 @@ import com.lynda.owner.placehoder.Owner;
 @Table(name = "contact")
 public class Contact {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "email")
     private String email;
     @Column(name = "image")
-    private byte[] image;
+    private String image;
     @Column(name = "name")
     private String name;
     @Column(name = "bio")
@@ -41,7 +41,7 @@ public class Contact {
         this.owner = owner;
     }
 
-    public Contact(int id, String email, byte[] image, String name, String bio, String phone) {
+    public Contact(int id, String email, String image, String name, String bio, String phone) {
         this.id = id;
         this.email = email;
         this.image = image;
@@ -61,10 +61,10 @@ public class Contact {
     public void setEmail(String email) {
         this.email = email;
     }
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
     public String getName() {
