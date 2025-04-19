@@ -22,6 +22,7 @@ public class OwnerServiceImpl implements OwnerService {
 
     @Override
     public void addOwner(Owner owner) {
+        ownerDao.addOwner(owner);
      
     }
 
