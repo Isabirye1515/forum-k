@@ -21,6 +21,20 @@
 
   <dependencies>
 
+    <dependency>
+      <groupId>org.testcontainers</groupId>
+      <artifactId>testcontainers</artifactId>
+      <version>1.20.6</version>
+    </dependency>
+
+
+    <dependency>
+      <groupId>org.rnorth.test-containers</groupId>
+      <artifactId>mysql</artifactId>
+      <version>0.9.5</version>
+    </dependency>
+
+
     <!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
 <dependency>
         <groupId>org.springframework</groupId>
@@ -280,5 +294,20 @@
     </testResources>
     
   </build>
+  <reporting>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-site-plugin</artifactId>
+      <version>4.0.0-M12</version>
+    </plugin>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-project-info-reports-plugin</artifactId>
+      <version>3.4.1</version>
+    </plugin>
+  </plugins>
+</reporting>
+
 
 </project>
